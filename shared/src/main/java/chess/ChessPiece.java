@@ -1,5 +1,6 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -47,6 +48,10 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        throw new RuntimeException("Not implemented");
+        /* Have a switch, which then goes into which case has the right piece.
+        Seperate program files for each piece case, which checks if move is allowed, then adds the move to an array
+        Passed in is the board, and the position on the board
+         */
+        return new ArrayList<>();
     }
 }
