@@ -45,4 +45,18 @@ public interface calculadorXadrez {
         }
         return actualMoves;
     }
+
+    static HashSet<ChessMove> nonrecursiveMoves(ChessBoard board, int[][] pieceMoves, ChessPosition startPosition) {
+        HashSet<ChessMove> validMoves = HashSet.newHashSet(10);
+        int startCol = startPosition.getColumn();
+        int startRow = startPosition.getRow();
+        ChessGame.TeamColor team = board.whichTeam(startPosition);
+        for (int[] pieceMove : pieceMoves) {
+            ChessPosition potentialMove = new ChessPosition(startRow + pieceMove[1], startCol + pieceMove[0]);
+            if (board.whichTeam(potentialMove) != team && onBoard(potentialMove)) {
+                validMoves.add(new ChessMove(startPosition, potentialMove, null));
+            }
+        }
+        return validMoves;
+    }
 }
