@@ -16,6 +16,14 @@ public class ChessPosition {
         this.col = col;
     }
 
+    /**
+     * @return which row this position is in
+     * 1 codes for the bottom row
+     */
+    public int getRow() {
+        return row;
+    }
+
     @Override
     public String toString() {
         return "ChessPosition{" +
@@ -23,13 +31,12 @@ public class ChessPosition {
                 ", col=" + col +
                 '}';
     }
-
-    /**
-     * @return which row this position is in
-     * 1 codes for the bottom row
-     */
-    public int getRow() {
-        return row;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessPosition that = (ChessPosition) o;
+        return row == that.row && col == that.col;
     }
 
     /**
