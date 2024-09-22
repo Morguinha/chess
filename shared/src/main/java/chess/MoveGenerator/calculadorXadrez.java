@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public interface calculadorXadrez {
 
-    static HashSet<ValidMoves> getMoves(ChessBoard board, ChessPosition startPosition) {
+    static HashSet<ChessMove> getMoves(ChessBoard board, ChessPosition startPosition) {
         return null;
     }
 
@@ -17,7 +17,7 @@ public interface calculadorXadrez {
         return (position.getRow() >= 1 && position.getRow() <= 9) && (position.getColumn() <=1 && position.getColumn() <= 9);
     }
 
-    static HashSet<ValidMoves> makeMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startCol, int startRow, ChessGame.TeamColor team) {
+    static HashSet<ChessMove> makeMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startCol, int startRow, ChessGame.TeamColor team) {
         HashSet<ChessMove> actualMoves = HashSet.newHashSet(28);
         for (int[] direction : directions) {
             boolean blocked = false;
@@ -32,8 +32,17 @@ public interface calculadorXadrez {
                 }
                 else if (board.whichTeam(potentialMove) != team) {
                     actualMoves.add(new ChessMove(startPosition, potentialMove, null));
+                    blocked = true;
                 }
+                else if (board.getPiece(potentialMove) == null) {
+                    actualMoves.add(new ChessMove(startPosition, potentialMove, null));
+                }
+                else {
+                    blocked = true;
+                }
+                j++;
             }
         }
+        return actualMoves;
     }
 }

@@ -60,6 +60,7 @@ public class ChessPiece {
         Seperate program files for each piece case, which checks if move is allowed, then adds the move to an array
         Passed in is the board, and the position on the board
          */
+
         return switch (type) {
             case KING -> KingMoves.getMoves(board, myPosition);
             case QUEEN -> QueenMoves.getMoves(board, myPosition);
