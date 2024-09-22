@@ -9,12 +9,12 @@ import java.util.HashSet;
 
 public class BishopMoves implements calculadorXadrez {
 
-    public static HashSet<ValidMoves> getMoves(ChessBoard board, ChessPosition startPosition) {
+    public static HashSet<ChessMove> getMoves(ChessBoard board, ChessPosition startPosition) {
         int startCol = startPosition.getColumn();
         int startRow = startPosition.getRow();
-        double[][] bishopOptions = {{-1.1},{1,1},{1,-1},{-1,-1}};
+        int[][] bishopOptions = {{1,1},{1,-1},{-1,1},{-1,-1}};
 
-        ChessGame.TeamColor team = board.getTeam(startPosition);
+        ChessGame.TeamColor team = board.whichTeam(startPosition);
 
         return calculadorXadrez.makeMoves(board, startPosition, bishopOptions, startRow, startCol, team);
     }
