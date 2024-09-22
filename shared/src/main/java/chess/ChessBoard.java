@@ -33,6 +33,13 @@ public class ChessBoard {
         return squares[position.getRow()][position.getColumn()];
     }
 
+    public ChessGame.TeamColor whichTeam(ChessPosition position) {
+        if (getPiece(position) != null) {
+            return getPiece(position).getTeamColor();
+        }
+        else return null;
+    }
+
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)

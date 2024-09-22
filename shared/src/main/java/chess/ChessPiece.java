@@ -1,5 +1,8 @@
 package chess;
 
+import chess.MoveGenerator.*;
+
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -11,7 +14,12 @@ import java.util.Collection;
  */
 public class ChessPiece {
 
+    private final ChessGame.TeamColor pieceColor;
+    private final PieceType type;
+
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
+        this.pieceColor = pieceColor;
+        this.type = type;
     }
 
     /**
@@ -30,19 +38,14 @@ public class ChessPiece {
      * @return Which team this chess piece belongs to
      */
     public ChessGame.TeamColor getTeamColor() {
-        throw new RuntimeException("Not implemented");
+        return pieceColor;
     }
 
     /**
      * @return which type of chess piece this piece is
      */
     public PieceType getPieceType() {
-        throw new RuntimeException("Not implemented");
-    }
-
-    @Override
-    public String toString() {
-        return "ChessPiece{}";
+        return type;
     }
 
     /**
@@ -57,6 +60,13 @@ public class ChessPiece {
         Seperate program files for each piece case, which checks if move is allowed, then adds the move to an array
         Passed in is the board, and the position on the board
          */
-        return new ArrayList<>();
+        return switch (type) {
+            case KING -> KingMoves.getMoves(board, myPosition);
+            case QUEEN -> QueenMoves.getMoves(board, myPosition);
+            case BISHOP -> BishopMoves.getMoves(board, myPosition);
+            case KNIGHT -> KnightMoves.getMoves(board, myPosition);
+            case ROOK -> RookMoves.getMoves(board, myPosition);
+            case PAWN -> PawnMoves.getMoves(board, myPosition);
+        };
     }
 }
