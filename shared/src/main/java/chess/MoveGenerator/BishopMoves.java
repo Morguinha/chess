@@ -16,6 +16,6 @@ public class BishopMoves implements calculadorXadrez {
 
         ChessGame.TeamColor team = board.whichTeam(startPosition);
 
-        return calculadorXadrez.makeMoves(board, startPosition, bishopOptions, startRow, startCol, team);
+        return calculadorXadrez.recursiveMoves(board, startPosition, bishopOptions, startRow, startCol, team);
     }
 }
