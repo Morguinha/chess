@@ -14,7 +14,8 @@ public interface calculadorXadrez {
     }
 
     static boolean onBoard(ChessPosition position) {
-        return (position.getRow() >= 1 && position.getRow() <= 9) && (position.getColumn() <=1 && position.getColumn() <= 9);
+        return (position.getRow() >= 1 && position.getRow() <= 8) &&
+                (position.getColumn() >= 1 && position.getColumn() <= 8);
     }
 
     static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startCol, int startRow, ChessGame.TeamColor team) {
