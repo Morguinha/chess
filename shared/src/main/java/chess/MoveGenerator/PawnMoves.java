@@ -16,28 +16,33 @@ public class PawnMoves implements calculadorXadrez {
         } else {
             quantityMove = -1;
         }
-        ChessPiece.PieceType[] promotedPieces = new ChessPiece.PieceType[]{null};
+        ChessPiece.PieceType[] promotionOptions = new ChessPiece.PieceType[]{null};
         ChessGame.TeamColor team = board.whichTeam(startPosition);
+        boolean promotion = (team == ChessGame.TeamColor.WHITE && startRow == 7) || (team == ChessGame.TeamColor.BLACK && startRow == 2);
 
-        for (ChessPiece.PieceType promotedPiece : promotedPieces) {
+        if (promotion) {
+            promotionOptions = new ChessPiece.PieceType[]{ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.ROOK};
+        }
+
+        for (ChessPiece.PieceType promotionOption : promotionOptions) {
             ChessPosition moveFront = new ChessPosition(startRow + quantityMove, startCol);
             if (calculadorXadrez.onBoard(moveFront) && board.getPiece(moveFront) == null) {
-                validMoves.add(new ChessMove(startPosition, moveFront, promotedPiece));
+                validMoves.add(new ChessMove(startPosition, moveFront, promotionOption));
             }
             ChessPosition frontLeft = new ChessPosition(startRow + quantityMove, startCol-1);
             if (calculadorXadrez.onBoard(frontLeft) && board.getPiece(frontLeft) != null && board.whichTeam(frontLeft) != team) {
-                validMoves.add(new ChessMove(startPosition, frontLeft, promotedPiece));
+                validMoves.add(new ChessMove(startPosition, frontLeft, promotionOption));
             }
             ChessPosition frontRight = new ChessPosition(startRow + quantityMove, startCol+1);
             if (calculadorXadrez.onBoard(frontRight) && board.getPiece(frontRight) != null && board.whichTeam(frontRight) != team) {
-                validMoves.add(new ChessMove(startPosition, frontRight, promotedPiece));
+                validMoves.add(new ChessMove(startPosition, frontRight, promotionOption));
             }
             ChessPosition moveTwo = new ChessPosition(startRow + quantityMove*2, startCol);
             // better run time if check here rather than have a different variable that is changed to false, that then must be checked every time
             if (calculadorXadrez.onBoard(moveTwo) && ((board.whichTeam(startPosition) == ChessGame.TeamColor.WHITE && startRow == 2) ||
                     (board.whichTeam(startPosition) == ChessGame.TeamColor.BLACK && startRow == 7))
                     && board.getPiece(moveTwo) == null && board.getPiece(moveFront) == null) {
-                validMoves.add(new ChessMove(startPosition, moveTwo, promotedPiece));
+                validMoves.add(new ChessMove(startPosition, moveTwo, promotionOption));
             }
         }
 
