@@ -15,6 +15,6 @@ public class RookMoves implements calculadorXadrez {
 
         ChessGame.TeamColor team = board.whichTeam(startPosition);
 
-        return calculadorXadrez.recursiveMoves(board, startPosition, rookOptions, startCol, startRow, team);
+        return calculadorXadrez.recursiveMoves(board, startPosition, rookOptions, startRow, startCol, team);
     }
 }
