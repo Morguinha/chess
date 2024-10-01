@@ -8,17 +8,17 @@ import chess.ChessGame;
 import java.util.HashSet;
 
 public interface calculadorXadrez {
-
+/*
     static HashSet<ChessMove> getMoves(ChessBoard board, ChessPosition startPosition) {
         return null;
     }
-
+*/
     static boolean onBoard(ChessPosition position) {
-        return (position.getRow() >= 1 && position.getRow() <= 9) && (position.getColumn() <=1 && position.getColumn() <= 9);
+        return (position.getRow() >= 1 && position.getRow() <= 8) && (position.getColumn() >= 1 && position.getColumn() <= 8);
     }
 
-    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startCol, int startRow, ChessGame.TeamColor team) {
-        HashSet<ChessMove> actualMoves = HashSet.newHashSet(28);
+    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startRow, int startCol, ChessGame.TeamColor team) {
+        HashSet<ChessMove> actualMoves = HashSet.newHashSet(30);
         for (int[] direction : directions) {
             boolean blocked = false;
             int j = 1;
@@ -30,12 +30,12 @@ public interface calculadorXadrez {
                 else if (board.whichTeam(potentialMove) == team) {
                     blocked = true;
                 }
+                else if (board.getPiece(potentialMove) == null) {
+                    actualMoves.add(new ChessMove(startPosition, potentialMove, null));
+                }
                 else if (board.whichTeam(potentialMove) != team) {
                     actualMoves.add(new ChessMove(startPosition, potentialMove, null));
                     blocked = true;
-                }
-                else if (board.getPiece(potentialMove) == null) {
-                    actualMoves.add(new ChessMove(startPosition, potentialMove, null));
                 }
                 else {
                     blocked = true;
@@ -53,7 +53,7 @@ public interface calculadorXadrez {
         ChessGame.TeamColor team = board.whichTeam(startPosition);
         for (int[] pieceMove : pieceMoves) {
             ChessPosition potentialMove = new ChessPosition(startRow + pieceMove[1], startCol + pieceMove[0]);
-            if (board.whichTeam(potentialMove) != team && onBoard(potentialMove)) {
+            if (onBoard(potentialMove) && board.whichTeam(potentialMove) != team) {
                 validMoves.add(new ChessMove(startPosition, potentialMove, null));
             }
         }

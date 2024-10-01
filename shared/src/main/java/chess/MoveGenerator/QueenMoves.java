@@ -15,6 +15,6 @@ public class QueenMoves implements calculadorXadrez {
 
         ChessGame.TeamColor team = board.whichTeam(startPosition);
 
-        return calculadorXadrez.recursiveMoves(board, startPosition, queenOptions, startCol, startRow, team);
+        return calculadorXadrez.recursiveMoves(board, startPosition, queenOptions, startRow, startCol, team);
     }
 }
