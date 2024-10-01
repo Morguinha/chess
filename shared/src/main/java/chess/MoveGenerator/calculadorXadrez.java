@@ -18,7 +18,7 @@ public interface calculadorXadrez {
                 (position.getColumn() >= 1 && position.getColumn() <= 8);
     }
 
-    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startCol, int startRow, ChessGame.TeamColor team) {
+    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition startPosition, int[][] directions, int startRow, int startCol, ChessGame.TeamColor team) {
         HashSet<ChessMove> actualMoves = HashSet.newHashSet(28);
         for (int[] direction : directions) {
             boolean blocked = false;
