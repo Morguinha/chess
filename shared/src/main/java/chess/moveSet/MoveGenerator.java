@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class MoveGenerator {
 
-    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition position, int[][] possibleMoves, int currentRow, int currentCol) {
+    static HashSet<ChessMove> recursiveMoves(ChessBoard board, ChessPosition position, int[][] possibleMoves, int currentRow, int currentCol, ChessGame.TeamColor team) {
         HashSet<ChessMove> moves = HashSet.newHashSet(30);
         for (int[] direction : possibleMoves) {
             boolean blocked = false;
@@ -17,6 +17,13 @@ public class MoveGenerator {
                 }
                 else if (board.getPiece(nextPosition) == null) {
                     moves.add(new ChessMove(position, nextPosition, null));
+                }
+                else if (board.teamOfSquare(nextPosition) != team) {
+                    moves.add(new ChessMove(position, nextPosition, null));
+                    blocked = true;
+                }
+                else if (board.teamOfSquare(nextPosition) == team) {
+                    blocked = true;
                 }
                 i++;
             }

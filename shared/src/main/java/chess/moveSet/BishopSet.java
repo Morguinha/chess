@@ -8,7 +8,8 @@ public class BishopSet {
         int currentCol = position.getColumn();
         int currentRow = position.getRow();
         int[][] possibleMoves = {{1,-1},{1,1},{-1,1},{-1,-1}};
+        ChessGame.TeamColor color = board.teamOfSquare(position);
 
-        return MoveGenerator.recursiveMoves(board, position, possibleMoves, currentRow, currentCol);
+        return MoveGenerator.recursiveMoves(board, position, possibleMoves, currentRow, currentCol, color);
     }
 }
