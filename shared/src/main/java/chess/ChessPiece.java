@@ -44,7 +44,7 @@ public class ChessPiece {
      * @return which type of chess piece this piece is
      */
     public PieceType getPieceType() {
-        throw new RuntimeException("Not implemented");
+        return type;
     }
 
     /**
@@ -56,9 +56,9 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         return switch (type) {
+            case BISHOP -> BishopSet.generateMoves(board, myPosition);
             case KING -> null;
             case QUEEN -> null;
-            case BISHOP -> BishopSet.generateMoves(board, myPosition);
             case KNIGHT -> null;
             case ROOK -> null;
             case PAWN -> null;

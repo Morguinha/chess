@@ -25,6 +25,9 @@ public class MoveGenerator {
                 else if (board.teamOfSquare(nextPosition) == team) {
                     blocked = true;
                 }
+                else {
+                    blocked = true;
+                }
                 i++;
             }
         }
@@ -36,6 +39,6 @@ public class MoveGenerator {
     }
 
     static boolean onBoard(ChessPosition position) {
-        return (position.getRow() >=1 && position.getColumn() <=8) && (position.getColumn() >=1 && position.getRow() <=8);
+        return (position.getRow() >=1 && position.getRow() <=8) && (position.getColumn() >=1 && position.getColumn() <=8);
     }
 }
