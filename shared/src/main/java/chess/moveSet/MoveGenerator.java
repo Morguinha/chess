@@ -18,6 +18,7 @@ public class MoveGenerator {
                 else if (board.getPiece(nextPosition) == null) {
                     moves.add(new ChessMove(position, nextPosition, null));
                 }
+                i++;
             }
         }
         return moves;
