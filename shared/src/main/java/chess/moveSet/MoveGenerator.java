@@ -34,8 +34,11 @@ public class MoveGenerator {
         return moves;
     }
 
-    static HashSet<ChessMove> singleMoves() {
-        return null;
+    static HashSet<ChessMove> singleMoves(ChessBoard board, ChessPosition position, int[][] possibleMoves, int currentRow, int currentCol, ChessGame.TeamColor team) {
+        HashSet<ChessMove> moves = HashSet.newHashSet(30);
+        for (int[] direction : possibleMoves) {
+            boolean
+        }
     }
 
     static boolean onBoard(ChessPosition position) {
