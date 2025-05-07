@@ -48,6 +48,7 @@ public class ChessPiece {
         return type;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) {
