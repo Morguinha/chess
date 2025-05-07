@@ -1,9 +1,6 @@
 package chess;
 
-import chess.moveSet.BishopSet;
-import chess.moveSet.KingSet;
-import chess.moveSet.KnightSet;
-import chess.moveSet.RookSet;
+import chess.moveSet.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -78,7 +75,7 @@ public class ChessPiece {
             case KING -> KingSet.generateMoves(board, myPosition);
             case KNIGHT -> KnightSet.generateMoves(board, myPosition);
             case ROOK -> RookSet.generateMoves(board, myPosition);
-            case QUEEN -> null;
+            case QUEEN -> QueenSet.generateMoves(board, myPosition);
             case PAWN -> null;
         };
     }
