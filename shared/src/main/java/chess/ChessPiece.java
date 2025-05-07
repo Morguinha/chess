@@ -76,7 +76,7 @@ public class ChessPiece {
             case KNIGHT -> KnightSet.generateMoves(board, myPosition);
             case ROOK -> RookSet.generateMoves(board, myPosition);
             case QUEEN -> QueenSet.generateMoves(board, myPosition);
-            case PAWN -> null;
+            case PAWN -> PawnSet.generateMoves(board, myPosition);
         };
     }
 }
