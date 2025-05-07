@@ -36,7 +36,7 @@ public class PawnSet {
             }
 
             ChessPosition moveTwo = new ChessPosition(currentRow + moveDirection*2, currentCol);
-            if (MoveGenerator.onBoard(moveTwo) && (color == ChessGame.TeamColor.WHITE && currentRow == 2) || (color == ChessGame.TeamColor.BLACK) && currentRow == 7) {
+            if (MoveGenerator.onBoard(moveTwo) && ((color == ChessGame.TeamColor.WHITE && currentRow == 2) || (color == ChessGame.TeamColor.BLACK && currentRow == 7)) && (board.getPiece(moveForward) == null) && (board.getPiece(moveTwo) == null)) {
                 moves.add(new ChessMove(position, moveTwo, pawnPiece));
             }
         }
