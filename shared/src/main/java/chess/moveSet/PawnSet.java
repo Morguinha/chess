@@ -30,6 +30,11 @@ public class PawnSet {
             if (MoveGenerator.onBoard(moveRight) && (board.teamOfSquare(moveRight) != color) && (board.getPiece(moveRight) != null)) {
                 moves.add(new ChessMove(position, moveRight, pawnPiece));
             }
+
+            ChessPosition moveTwo = new ChessPosition(currentRow + moveDirection*2, currentCol);
+            if (MoveGenerator.onBoard(moveTwo) && (color == ChessGame.TeamColor.WHITE && currentRow == 2) || (color == ChessGame.TeamColor.BLACK) && currentRow == 7) {
+                moves.add(new ChessMove(position, moveTwo, pawnPiece));
+            }
         }
 
         if (promotion) {
