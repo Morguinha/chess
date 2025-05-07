@@ -16,6 +16,10 @@ public class PawnSet {
         else {moveDirection = -1;}
         boolean promotion = (color == ChessGame.TeamColor.WHITE && currentRow == 7) || (color == ChessGame.TeamColor.BLACK && currentRow == 2);
 
+        if (promotion) {
+            pawnPieces = new ChessPiece.PieceType[] {ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.ROOK};
+        }
+
         HashSet<ChessMove> moves = HashSet.newHashSet(20);
         for (ChessPiece.PieceType pawnPiece : pawnPieces) {
             ChessPosition moveForward = new ChessPosition(currentRow + moveDirection, currentCol);
@@ -35,10 +39,6 @@ public class PawnSet {
             if (MoveGenerator.onBoard(moveTwo) && (color == ChessGame.TeamColor.WHITE && currentRow == 2) || (color == ChessGame.TeamColor.BLACK) && currentRow == 7) {
                 moves.add(new ChessMove(position, moveTwo, pawnPiece));
             }
-        }
-
-        if (promotion) {
-            pawnPieces = new ChessPiece.PieceType[] {ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.ROOK};
         }
         return moves;
     }
