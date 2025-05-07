@@ -1,6 +1,7 @@
 package chess;
 
 import chess.moveSet.BishopSet;
+import chess.moveSet.KingSet;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,7 +73,7 @@ public class ChessPiece {
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         return switch (type) {
             case BISHOP -> BishopSet.generateMoves(board, myPosition);
-            case KING -> null;
+            case KING -> KingSet.generateMoves(board, myPosition);
             case QUEEN -> null;
             case KNIGHT -> null;
             case ROOK -> null;

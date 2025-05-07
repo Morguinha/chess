@@ -10,6 +10,6 @@ public class KingSet {
         int[][] possibleMoves = {{1,-1},{1,0},{1,1},{0,-1},{0,1},{-1,-1},{-1,0},{-1,1}};
         ChessGame.TeamColor color = board.teamOfSquare(position);
 
-        return MoveGenerator.singleMoves();
+        return MoveGenerator.singleMoves(board, position, possibleMoves, currentRow, currentCol, color);
     }
 }

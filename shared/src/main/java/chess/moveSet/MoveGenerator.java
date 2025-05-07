@@ -35,10 +35,13 @@ public class MoveGenerator {
     }
 
     static HashSet<ChessMove> singleMoves(ChessBoard board, ChessPosition position, int[][] possibleMoves, int currentRow, int currentCol, ChessGame.TeamColor team) {
-        HashSet<ChessMove> moves = HashSet.newHashSet(30);
+        HashSet<ChessMove> moves = HashSet.newHashSet(8);
         for (int[] direction : possibleMoves) {
-            boolean
+            ChessPosition nextPosition = new ChessPosition(currentRow + direction[1], currentCol + direction[0]);
+            if (MoveGenerator.onBoard(nextPosition) && board.teamOfSquare(nextPosition) != team)
+                moves.add(new ChessMove(position, nextPosition, null));
         }
+        return moves;
     }
 
     static boolean onBoard(ChessPosition position) {
