@@ -2,6 +2,7 @@ package chess;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -90,6 +91,9 @@ public class ChessGame {
             board.addPiece(move.getEndPosition(), movePiece);
             setTeamTurn(getTeamTurn() == TeamColor.WHITE ? TeamColor.BLACK : TeamColor.WHITE);
         }
+        else {
+            throw new InvalidMoveException(String.format("Valid Move: %b, Your Turn: %b", movePossible, rightTeam));
+        }
     }
 
     /**
@@ -146,5 +150,28 @@ public class ChessGame {
     }
     public boolean getGameEnd() {
         return gameEnd;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChessGame chessGame = (ChessGame) o;
+        return gameEnd == chessGame.gameEnd && Objects.equals(board, chessGame.board) && whosTurn == chessGame.whosTurn;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(board, whosTurn, gameEnd);
+    }
+
+    @Override
+    public String toString() {
+        return "ChessGame{" +
+                "board=" + board +
+                ", whosTurn=" + whosTurn +
+                ", gameEnd=" + gameEnd +
+                '}';
     }
 }
