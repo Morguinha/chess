@@ -57,6 +57,17 @@ public class ChessGame {
         HashSet<ChessMove> potentialMoves = (HashSet<ChessMove>) board.getPiece(startPosition).pieceMoves(board, startPosition);
         HashSet<ChessMove> actualMoves = HashSet.newHashSet(potentialMoves.size());
 
+        for (ChessMove eachMove : potentialMoves) {
+            ChessPiece holdingPlace = board.getPiece(eachMove.getEndPosition());
+            board.addPiece(startPosition, null);
+            board.addPiece(eachMove.getEndPosition(), currentPiece);
+            if (!isInCheck(currentPiece.getTeamColor())) {
+                actualMoves.add(eachMove);
+            }
+            board.addPiece(eachMove.getEndPosition(), holdingPlace);
+            board.addPiece(startPosition, currentPiece);
+        }
+
         return actualMoves;
     }
 
