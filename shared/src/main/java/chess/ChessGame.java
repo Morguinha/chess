@@ -54,6 +54,9 @@ public class ChessGame {
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
         ChessPiece currentPiece = board.getPiece(startPosition);
+        if (currentPiece == null) {
+            return null;
+        }
 
         HashSet<ChessMove> potentialMoves = (HashSet<ChessMove>) board.getPiece(startPosition).pieceMoves(board, startPosition);
         HashSet<ChessMove> actualMoves = HashSet.newHashSet(potentialMoves.size());
