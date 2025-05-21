@@ -90,6 +90,9 @@ public class ChessGame {
         boolean movePossible = moves.contains(move);
         if (rightTeam && movePossible) {
             ChessPiece movePiece = board.getPiece(move.getStartPosition());
+            if (move.getPromotionPiece() != null) {
+                movePiece = new ChessPiece(movePiece.getTeamColor(), move.getPromotionPiece());
+            }
             board.addPiece(move.getStartPosition(), null);
             board.addPiece(move.getEndPosition(), movePiece);
             setTeamTurn(getTeamTurn() == TeamColor.WHITE ? TeamColor.BLACK : TeamColor.WHITE);
