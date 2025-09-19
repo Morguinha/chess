@@ -1,7 +1,6 @@
 package chess.moveGenerator;
 
-import chess.ChessGame;
-import chess.ChessPosition;
+import chess.*;
 
 import java.util.HashSet;
 
@@ -10,6 +9,7 @@ public class bishopMoves implements masterMoves {
         int startRow = startPos.getRow();
         int startCol = startPos.getColumn();
         int[][] moves = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+        ChessGame.TeamColor team = board.turn(startPos);
 
         return masterMoves.recurseMove(board, moves, startPos, startRow, startCol, team);
     }
