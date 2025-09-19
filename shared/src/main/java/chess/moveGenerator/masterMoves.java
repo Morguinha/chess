@@ -33,4 +33,16 @@ public interface masterMoves {
         }
         return possibleMoves;
     }
+
+    static HashSet<ChessMove> staticMove(ChessBoard board, int[][] direction, ChessPosition startPosition, int startRow, int startCol, ChessGame.TeamColor team) {
+        HashSet<ChessMove> possibleMoves = HashSet.newHashSet(9);
+        for (int[] direct : direction) {
+            ChessPosition nextMove = new ChessPosition(startRow + direct[0], startCol + direct[1]);
+            if (onBoard(nextMove) && board.turn(nextMove) != team) {
+                possibleMoves.add(new ChessMove(startPosition, nextMove, null));
+            }
+        }
+
+        return possibleMoves;
+    }
 }

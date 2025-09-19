@@ -82,7 +82,7 @@ public class ChessPiece {
             case ROOK -> null;
             case KNIGHT -> null;
             case QUEEN -> null;
-            case KING -> null;
+            case KING -> kingMoves.genMoves(board, myPosition);
             case PAWN -> null;
         };
     }
