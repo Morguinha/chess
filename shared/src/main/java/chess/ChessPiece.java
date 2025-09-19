@@ -80,7 +80,7 @@ public class ChessPiece {
         return switch (type) {
             case BISHOP -> bishopMoves.genMoves(board, myPosition);
             case ROOK -> null;
-            case KNIGHT -> null;
+            case KNIGHT -> knightMoves.genMoves(board, myPosition);
             case QUEEN -> null;
             case KING -> kingMoves.genMoves(board, myPosition);
             case PAWN -> null;
