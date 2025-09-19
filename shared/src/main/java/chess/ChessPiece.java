@@ -1,5 +1,7 @@
 package chess;
 
+import chess.moveGenerator.*;
+
 import java.util.Collection;
 
 /**
@@ -54,11 +56,11 @@ public class ChessPiece {
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         return switch (type) {
             case BISHOP -> bishopMoves.genMoves(board, myPosition);
-            case ROOK -> rookMoves.genMoves(board, myPosition);
-            case KNIGHT -> knightMoves.genMoves(board, myPosition);
-            case QUEEN -> queenMoves.genMoves(board, myPosition);
-            case KING -> kingMoves.genMoves(board, myPosition);
-            case PAWN -> pawnMoves.genMoves(board, myPosition);
+            case ROOK -> null;
+            case KNIGHT -> null;
+            case QUEEN -> null;
+            case KING -> null;
+            case PAWN -> null;
         };
     }
 }
