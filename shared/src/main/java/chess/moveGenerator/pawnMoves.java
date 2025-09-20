@@ -22,7 +22,14 @@ public class pawnMoves implements masterMoves {
         }
 
         for (ChessPiece.PieceType promotionPiece : promotionPieces) {
-            ChessPosition moveTwo = new ChessPosition(startRow + direction)
+            ChessPosition moveTwo = new ChessPosition(startRow + direction*2, startCol);
+            ChessPosition moveOne = new ChessPosition(startRow + direction, startCol);
+            ChessPosition moveLeft = new ChessPosition(startRow + direction, startCol-1);
+            ChessPosition moveRight = new ChessPosition(startRow + direction, startCol+1);
+            if (masterMoves.onBoard(moveOne) && board.turn(moveOne) == null) {
+                possibleMoves.add(new ChessMove(startPos, moveOne, promotionPiece));
+            }
+            if (board.turn(startPos) == ChessGame.TeamColor.WHITE && startRow == 2 && board.turn(moveTwo) == null &&board.turn(moveOne) == null)
         }
     }
 }
