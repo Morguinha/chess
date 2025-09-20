@@ -9,7 +9,7 @@ public class knightMoves implements masterMoves {
         int startRow = startPos.getRow();
         int startCol = startPos.getColumn();
         int[][] moves = {{1, 2}, {2, 1}, {-1, 2}, {-2, 1}, {1, -2}, {2, -1}, {-1, -2}, {-2, -1}};
-        ChessGame.TeamColor team = board.turn(startPos);
+        ChessGame.TeamColor team = board.colorTeam(startPos);
 
         return masterMoves.staticMove(board, moves, startPos, startRow, startCol, team);
     }

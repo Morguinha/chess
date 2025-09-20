@@ -9,7 +9,7 @@ public class rookMoves implements masterMoves {
         int startRow = startPos.getRow();
         int startCol = startPos.getColumn();
         int[][] moves = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-        ChessGame.TeamColor team = board.turn(startPos);
+        ChessGame.TeamColor team = board.colorTeam(startPos);
 
         return masterMoves.recurseMove(board, moves, startPos, startRow, startCol, team);
     }

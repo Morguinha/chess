@@ -18,11 +18,11 @@ public interface masterMoves {
                 ChessPosition nextMove = new ChessPosition(startRow + direct[0] * i, startCol + direct[1] * i);
                 if (!onBoard(nextMove)) {
                     blocked = true;
-                } else if (board.turn(nextMove) == team) {
+                } else if (board.colorTeam(nextMove) == team) {
                     blocked = true;
-                } else if (board.turn(nextMove) == null) {
+                } else if (board.colorTeam(nextMove) == null) {
                     possibleMoves.add(new ChessMove(startPosition, nextMove, null));
-                } else if (board.turn(nextMove) != team) {
+                } else if (board.colorTeam(nextMove) != team) {
                     possibleMoves.add(new ChessMove(startPosition, nextMove, null));
                     blocked = true;
                 } else {
@@ -38,7 +38,7 @@ public interface masterMoves {
         HashSet<ChessMove> possibleMoves = HashSet.newHashSet(9);
         for (int[] direct : direction) {
             ChessPosition nextMove = new ChessPosition(startRow + direct[0], startCol + direct[1]);
-            if (onBoard(nextMove) && board.turn(nextMove) != team) {
+            if (onBoard(nextMove) && board.colorTeam(nextMove) != team) {
                 possibleMoves.add(new ChessMove(startPosition, nextMove, null));
             }
         }
