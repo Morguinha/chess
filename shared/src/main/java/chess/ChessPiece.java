@@ -79,9 +79,9 @@ public class ChessPiece {
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         return switch (type) {
             case BISHOP -> bishopMoves.genMoves(board, myPosition);
-            case ROOK -> null;
+            case ROOK -> rookMoves.genMoves(board, myPosition);
             case KNIGHT -> knightMoves.genMoves(board, myPosition);
-            case QUEEN -> null;
+            case QUEEN -> queenMoves.genMoves(board, myPosition);
             case KING -> kingMoves.genMoves(board, myPosition);
             case PAWN -> null;
         };
