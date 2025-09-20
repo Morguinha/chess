@@ -83,7 +83,7 @@ public class ChessPiece {
             case KNIGHT -> knightMoves.genMoves(board, myPosition);
             case QUEEN -> queenMoves.genMoves(board, myPosition);
             case KING -> kingMoves.genMoves(board, myPosition);
-            case PAWN -> null;
+            case PAWN -> pawnMoves.genMoves(board, myPosition);
         };
     }
 }

@@ -39,5 +39,6 @@ public class pawnMoves implements masterMoves {
                 possibleMoves.add(new ChessMove(startPos, moveRight, promotionPiece));
             }
         }
+        return possibleMoves;
     }
 }
