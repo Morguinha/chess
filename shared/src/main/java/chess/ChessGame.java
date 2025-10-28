@@ -14,14 +14,16 @@ public class ChessGame {
     private ChessBoard board;
 
     public ChessGame() {
-
+        //initializing a new board
+        board = new ChessBoard();
+        setTeamTurn(TeamColor.WHITE);
     }
 
     /**
      * @return Which team's turn it is
      */
     public TeamColor getTeamTurn() {
-        throw new RuntimeException("Not implemented");
+        return teamTurn;
     }
 
     /**
