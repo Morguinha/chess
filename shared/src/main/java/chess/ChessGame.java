@@ -81,10 +81,10 @@ public class ChessGame {
         //need cases for if there are no moves, if there is a move, or else throw exceptions
         boolean isItYourTurn = getTeamTurn() == board.colorTeam(move.getStartPosition());
         Collection<ChessMove> possibleMoves = validMoves(move.getStartPosition());
-        boolean isPossMove = possibleMoves.contains(move);
         if (possibleMoves == null) {
             throw new InvalidMoveException("No possible moves available");
         }
+        boolean isPossMove = possibleMoves.contains(move);
         if (isPossMove && isItYourTurn) {
             ChessPiece chosenPiece = board.getPiece(move.getStartPosition());
             if (move.getPromotionPiece() != null) {
