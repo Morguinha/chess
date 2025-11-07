@@ -18,6 +18,7 @@ public class ChessGame {
     public ChessGame() {
         //initializing a new board
         board = new ChessBoard();
+        board.resetBoard();
         setTeamTurn(TeamColor.WHITE);
     }
 
@@ -42,7 +43,12 @@ public class ChessGame {
      */
     public enum TeamColor {
         WHITE,
-        BLACK
+        BLACK;
+
+
+        public String toString() {
+            return this == WHITE ? "white" : "black";
+        }
     }
 
     /**

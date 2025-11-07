@@ -10,10 +10,10 @@ import java.util.Objects;
  * signature of the existing methods.
  */
 public class ChessBoard {
-    private ChessPiece[][] board = new ChessPiece[8][8];
+    private ChessPiece[][] board;
 
     public ChessBoard() {
-
+        board = new ChessPiece[8][8];
     }
 
     /**
@@ -50,6 +50,8 @@ public class ChessBoard {
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
+        board = new ChessPiece[8][8];
+
         for (int i = 1; i < 9; i++) {
             addPiece(new ChessPosition(2, i), new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN));
         }
@@ -76,7 +78,17 @@ public class ChessBoard {
     }
 
     @Override
+    public String toString() {
+        return "ChessBoard{" +
+                "board=" + Arrays.toString(board) +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }

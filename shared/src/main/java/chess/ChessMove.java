@@ -44,9 +44,6 @@ public class ChessMove {
         this.promotionPiece = promotionPiece;
     }
 
-    public ChessMove(int i, int i1) {
-    }
-
     /**
      * @return ChessPosition of starting location
      */
