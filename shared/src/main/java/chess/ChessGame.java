@@ -69,7 +69,9 @@ public class ChessGame {
             ChessPiece temporary = board.getPiece(potentialMove.getEndPosition());
             board.addPiece(startPosition, null);
             board.addPiece(potentialMove.getEndPosition(), activePiece); //this is the swapping of pieces
-            //need to add logic for if you are in check or not
+            if (!isInCheck(activePiece.getTeamColor())) {
+                realMoves.add(potentialMove);
+            }
             realMoves.add(potentialMove);
             board.addPiece(potentialMove.getEndPosition(), temporary);
             board.addPiece(startPosition, activePiece);
