@@ -72,7 +72,6 @@ public class ChessGame {
             if (!isInCheck(activePiece.getTeamColor())) {
                 realMoves.add(potentialMove);
             }
-            realMoves.add(potentialMove);
             board.addPiece(potentialMove.getEndPosition(), temporary);
             board.addPiece(startPosition, activePiece);
         }
